@@ -13,15 +13,17 @@ export const profile = {
 export const experience = {
   company: "Tata Elxsi Limited",
   logo: "/tata-elxsi-logo.jpeg",
-  startDate: new Date(2023, 5, 1), // June 2023 (month is 0-indexed)
+  startDate: new Date(2023, 5, 1), // June 2023
   positions: [
     {
       role: "Senior Engineer - Connected Digital Platform & Solutions",
       start: new Date(2025, 9, 1), // Oct 2025
-      end: null, // null = present
+      end: null,
       points: [
         "Leading application development, owning architecture, delivery, and production support.",
         "Performed code reviews, VAPT remediation, SonarQube analysis, and AWS Inspector vulnerability fixes.",
+        "Improved code quality, security, and maintainability through static analysis and remediation practices.",
+        "Authored wireframes and workflow documentation to align cross-functional teams on platform architecture and rollout.",
       ],
     },
     {
@@ -31,6 +33,8 @@ export const experience = {
       points: [
         "Developed web applications using React.js, Node.js, Express.js, and Spring Boot REST APIs.",
         "Implemented Micro Frontends, multi-language support, Secure Routes, and JWT Authentication.",
+        "Worked on component communication and reducing prop drilling across application modules.",
+        "Built a native Android module in Kotlin (Android Studio) with biometric authentication and map-based navigation for the connected platform.",
       ],
     },
     {

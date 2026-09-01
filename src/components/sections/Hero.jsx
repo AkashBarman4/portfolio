@@ -30,6 +30,7 @@ function RotatingRoles({ roles }) {
 }
 
 export default function Hero() {
+  const [photoLoaded, setPhotoLoaded] = useState(false);
   const mailtoLink = "mailto:" + profile.email;
 
   return (
@@ -42,16 +43,24 @@ export default function Hero() {
           className="relative"
         >
           <div className="aspect-4/5 rounded-2xl overflow-hidden border border-border bg-surface relative">
+            {!photoLoaded && (
+              <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-surface via-border to-surface bg-[length:200%_200%]"></div>
+            )}
             <img
               src="/photo.png"
               alt="Akash Barman"
-              className="w-full h-full object-cover grayscale contrast-110"
+              loading="eager"
+              fetchPriority="high"
+              onLoad={() => setPhotoLoaded(true)}
               onError={(e) => {
                 e.target.style.display = "none";
               }}
+              className={
+                "w-full h-full object-cover grayscale contrast-125 brightness-90 dark:brightness-100 transition-opacity duration-500 " +
+                (photoLoaded ? "opacity-100" : "opacity-0")
+              }
             />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
 
           <div className="absolute -bottom-3 -right-3 w-full h-full border border-accent/40 rounded-2xl -z-10"></div>
@@ -135,7 +144,7 @@ export default function Hero() {
             ease: "easeInOut",
           },
         }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:block"
       >
         <svg
           width="28"
